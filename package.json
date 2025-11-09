@@ -1,0 +1,25 @@
+{
+  "name": "casaq-functions",
+  "version": "1.0.0",
+  "description": "Appwrite Cloud Functions for CASAQ platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/casaq-tech/casaq-functions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/casaq-tech/casaq-functions/issues"
+  },
+  "homepage": "https://github.com/casaq-tech/casaq-functions#readme",
+  "dependencies": {
+    "appwrite": "^21.4.0",
+    "cloudinary": "^2.8.0",
+    "dotenv": "^17.2.3"
+  }
+}
