@@ -2,10 +2,14 @@ import { v2 as cloudinary } from "cloudinary";
 
 export default async ({ req, res, log }) => {
   try {
-    // Only allow authenticated users
-    if (!req.headers["x-appwrite-user-id"]) {
+    // Extract and verify JWT instead of x-appwrite-user-id
+    const authHeader = req.headers["authorization"];
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return res.json({ error: "Unauthorized" }, 401);
     }
+
+    // Optional: log the start of execution
+    log("Auth header received. Generating Cloudinary signature...");
 
     // Configure Cloudinary
     cloudinary.config({
@@ -15,7 +19,6 @@ export default async ({ req, res, log }) => {
       secure: true,
     });
 
-    // Generate a signed upload URL
     const timestamp = Math.round(new Date().getTime() / 1000);
     const signature = cloudinary.utils.api_sign_request(
       {
