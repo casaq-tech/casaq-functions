@@ -23,7 +23,7 @@ export default async ({ req, res, log }) => {
     const signature = cloudinary.utils.api_sign_request(
       {
         timestamp,
-        upload_preset: process.env.UPLOAD_PRESET,
+        upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
       },
       process.env.CLOUDINARY_API_SECRET
     );
@@ -33,7 +33,7 @@ export default async ({ req, res, log }) => {
       api_key: process.env.CLOUDINARY_API_KEY,
       timestamp,
       signature,
-      upload_preset: process.env.UPLOAD_PRESET,
+      upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
     });
   } catch (err) {
     log(err);
